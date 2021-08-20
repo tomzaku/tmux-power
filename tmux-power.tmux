@@ -82,8 +82,9 @@ G11=#6c6c6c #242
 G12=#767676 #243
 
 FG="$G10"
-BG="$G02"
+# BG="$G02"
 
+BG=$(tmux_get '@tmux_power_theme_bg' $G02)
 # Status options
 tmux_set status-interval 1
 tmux_set status on
@@ -116,7 +117,7 @@ tmux_set status-left "$LS"
 tmux_set status-right-bg "$G04"
 tmux_set status-right-fg "G12"
 tmux_set status-right-length 150
-RS="#[fg=$G08,bg=$G05,nobold] #[fg=$TC,bg=$G08] $session_icon #S #[fg=$TC,bg=$G08]$left_arrow_icon#[fg=$G04,bg=$TC] $path_icon $path #[fg=$TC,bg=$G02]$right_arrow_icon"
+RS="#[fg=$G08,bg=$BG,nobold] #[fg=$TC,bg=$G08] $session_icon #S #[fg=$TC,bg=$G08]$left_arrow_icon#[fg=$G04,bg=$TC] $path_icon $path #[fg=$TC,bg=$BG]$right_arrow_icon"
 if "$show_download_speed"; then
     RS="#[fg=$G05,bg=$BG]$left_arrow_icon#[fg=$TC,bg=$G05] $upload_speed_icon #{upload_speed}$RS"
 fi
